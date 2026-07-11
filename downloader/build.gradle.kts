@@ -46,7 +46,7 @@ dependencies {
     implementation(libs.okhttp)
     
     // WorkManager
-    implementation(libs.work-runtime-ktx)
+    implementation(libs.work.runtime.ktx)
     
     // Room (for referencing entities or database)
     implementation(libs.room.runtime)
@@ -60,5 +60,5 @@ dependencies {
     // Testing
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
-    testImplementation(libs.coroutines-test)
+    testImplementation(libs.coroutines.test)
 }

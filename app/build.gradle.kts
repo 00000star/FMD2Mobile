@@ -51,26 +51,26 @@ dependencies {
     implementation(project(":settings"))
 
     // AndroidX Core & AppCompat
-    implementation(libs.core-ktx)
+    implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
 
     // Compose
-    implementation(platform(libs.compose-bom))
-    implementation(libs.compose-ui)
-    implementation(libs.compose-ui-graphics)
-    implementation(libs.compose-ui-tooling-preview)
-    implementation(libs.compose-material3)
-    implementation(libs.compose-material-icons)
-    implementation(libs.compose-foundation)
-    implementation(libs.compose-runtime)
-    implementation(libs.activity-compose)
-    implementation(libs.navigation-compose)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.material.icons)
+    implementation(libs.compose.foundation)
+    implementation(libs.compose.runtime)
+    implementation(libs.activity.compose)
+    implementation(libs.navigation.compose)
 
     // Lifecycle
-    implementation(libs.lifecycle-runtime-ktx)
-    implementation(libs.lifecycle-runtime-compose)
-    implementation(libs.lifecycle-viewmodel-compose)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.runtime.compose)
+    implementation(libs.lifecycle.viewmodel.compose)
 
     // Hilt
     implementation(libs.hilt.android)
@@ -80,10 +80,10 @@ dependencies {
     ksp(libs.hilt.work-compiler)
 
     // Coil
-    implementation(libs.coil-compose)
+    implementation(libs.coil.compose)
 
     // WorkManager
-    implementation(libs.work-runtime-ktx)
+    implementation(libs.work.runtime.ktx)
 
     // Room Runtime (Required for direct access or testing if needed)
     implementation(libs.room.runtime)
@@ -92,8 +92,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(platform(libs.compose-bom))
-    androidTestImplementation(libs.compose-ui-test-junit4)
-    debugImplementation(libs.compose-ui-tooling)
-    debugImplementation(libs.compose-ui-test-manifest)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.compose.ui.test.junit4)
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
 }

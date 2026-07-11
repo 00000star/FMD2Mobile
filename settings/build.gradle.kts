@@ -45,14 +45,14 @@ dependencies {
     implementation(libs.coroutines.core)
     
     // Compose
-    implementation(platform(libs.compose-bom))
-    implementation(libs.compose-ui)
-    implementation(libs.compose-material3)
-    implementation(libs.compose-material-icons)
-    implementation(libs.compose-ui-tooling-preview)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.material.icons)
+    implementation(libs.compose.ui.tooling.preview)
     
     // DataStore
-    implementation(libs.datastore-preferences)
+    implementation(libs.datastore.preferences)
     
     // Hilt
     implementation(libs.hilt.android)
