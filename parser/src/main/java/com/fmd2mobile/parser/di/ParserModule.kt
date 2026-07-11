@@ -4,6 +4,7 @@ import com.fmd2mobile.core.source.MangaSource
 import com.fmd2mobile.parser.source.MangaReaderSource
 import dagger.Binds
 import dagger.Module
+import dagger.multibindings.IntoMap
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -20,9 +21,17 @@ import javax.inject.Singleton
 abstract class ParserModule {
 
     @Binds
-    @Singleton
-    abstract fun bindMangaSource(
+    @IntoMap
+    @dagger.multibindings.StringKey("MangaReader")
+    abstract fun bindMangaReaderSource(
         mangaReaderSource: MangaReaderSource
+    ): MangaSource
+
+    @Binds
+    @IntoMap
+    @dagger.multibindings.StringKey("MangaDex")
+    abstract fun bindMangaDexSource(
+        mangaDexSource: com.fmd2mobile.parser.source.mangadex.MangaDexSource
     ): MangaSource
 
     companion object {

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.fmd2mobile.core.model.Chapter
 import com.fmd2mobile.core.repository.ChapterRepository
 import com.fmd2mobile.core.source.MangaSource
+import com.fmd2mobile.core.repository.MangaRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +31,8 @@ class ReaderViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     @ApplicationContext private val context: Context,
     private val chapterRepository: ChapterRepository,
-    private val source: MangaSource
+    private val mangaRepository: MangaRepository,
+    private val sources: Map<String, @JvmSuppressWildcards MangaSource>
 ) : ViewModel() {
 
     private val chapterId: Long = savedStateHandle.get<Long>("chapterId") ?: 0L
@@ -62,7 +64,9 @@ class ReaderViewModel @Inject constructor(
                     }
                 } else {
                     // Online mode: Fetch URLs
-                    val remotePages = source.getPageList(chapter)
+                    val manga = mangaRepository.getMangaById(chapter.mangaId)
+                    val activeSource = sources[manga?.source ?: "MangaDex"] ?: sources.values.first()
+                    val remotePages = activeSource.getPageList(chapter)
                     if (remotePages.isNotEmpty()) {
                         _uiState.value = ReaderUiState.Success(remotePages, isOffline = false)
                     } else {

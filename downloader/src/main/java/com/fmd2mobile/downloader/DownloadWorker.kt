@@ -44,7 +44,7 @@ class DownloadWorker @AssistedInject constructor(
     private val chapterRepository: ChapterRepository,
     private val mangaRepository: MangaRepository,
     private val settingsRepository: SettingsRepository,
-    private val source: MangaSource,
+    private val sources: Map<String, @JvmSuppressWildcards MangaSource>,
     private val client: OkHttpClient,
     private val mihonExporter: MihonExporter
 ) : CoroutineWorker(context, workerParams) {
@@ -105,7 +105,8 @@ class DownloadWorker @AssistedInject constructor(
 
         try {
             // Fetch list of page image URLs
-            val pageUrls = source.getPageList(chapter)
+            val activeSource = sources[manga.source] ?: sources.values.first()
+            val pageUrls = activeSource.getPageList(chapter)
             if (pageUrls.isEmpty()) {
                 markDownloadFailed(download, chapter)
                 tickerJob.cancel()

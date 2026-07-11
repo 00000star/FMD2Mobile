@@ -19,9 +19,11 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class BrowseViewModel @Inject constructor(
-    private val mangaSource: MangaSource,
+    private val sources: Map<String, @JvmSuppressWildcards MangaSource>,
     private val mangaRepository: MangaRepository
 ) : ViewModel() {
+
+    private val mangaSource: MangaSource = sources["MangaDex"] ?: sources.values.first()
 
     private val _uiState = MutableStateFlow<BrowseUiState>(BrowseUiState.Idle)
     val uiState: StateFlow<BrowseUiState> = _uiState.asStateFlow()
