@@ -36,7 +36,9 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
-    
+    // Inject
+    implementation("javax.inject:javax.inject:1")
+
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)
