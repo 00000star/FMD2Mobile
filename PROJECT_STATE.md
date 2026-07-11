@@ -11,6 +11,7 @@ All 20 developmental build strategy steps have been successfully planned, struct
 - `:parser` (Jsoup-based HTML source scraper + MangaDex API JSON implementation). Dagger Multibindings enabled for multi-source support.
 - `:localsource` (Mihon Local Source export zip/CBZ formatter).
 - `:settings` (DataStore preferences management).
+- `Plugin Architecture` (Dynamic `DexClassLoader` extension manager to load external `.apk` scrapers at runtime without recompiling).
 
 ---
 
