@@ -31,7 +31,10 @@ data class ChapterEntity(
     val url: String,
     val status: String, // String representation of Chapter.Status
     val filePath: String,
-    val pageCount: Int
+    val pageCount: Int,
+    val isRead: Boolean = false,
+    val lastPageRead: Int = 0,
+    val lastReadAt: Long = 0
 ) {
     fun toDomain(): Chapter = Chapter(
         id = id,
@@ -41,7 +44,10 @@ data class ChapterEntity(
         url = url,
         status = Chapter.Status.valueOf(status),
         filePath = filePath,
-        pageCount = pageCount
+        pageCount = pageCount,
+        isRead = isRead,
+        lastPageRead = lastPageRead,
+        lastReadAt = lastReadAt
     )
 
     companion object {
@@ -53,7 +59,10 @@ data class ChapterEntity(
             url = chapter.url,
             status = chapter.status.name,
             filePath = chapter.filePath,
-            pageCount = chapter.pageCount
+            pageCount = chapter.pageCount,
+            isRead = chapter.isRead,
+            lastPageRead = chapter.lastPageRead,
+            lastReadAt = chapter.lastReadAt
         )
     }
 }

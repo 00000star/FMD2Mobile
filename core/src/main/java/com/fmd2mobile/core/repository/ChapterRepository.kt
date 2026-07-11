@@ -12,6 +12,7 @@ interface ChapterRepository {
     suspend fun updateChapter(chapter: Chapter)
     suspend fun updateChapterStatusAndInfo(chapterId: Long, status: Chapter.Status, filePath: String, pageCount: Int)
     suspend fun updateChapterStatus(chapterId: Long, status: Chapter.Status)
+    suspend fun updateReadingProgress(chapterId: Long, isRead: Boolean, lastPageRead: Int, lastReadAt: Long)
     fun getChapterById(chapterId: Long): Flow<Chapter?>
     suspend fun getChapterByIdOneShot(chapterId: Long): Chapter?
     fun getChaptersByMangaId(mangaId: Long): Flow<List<Chapter>>

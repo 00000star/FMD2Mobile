@@ -40,6 +40,7 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.coroutines.core)
+    implementation(libs.okhttp)
     
     // Hilt
     implementation(libs.hilt.android)

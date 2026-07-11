@@ -42,6 +42,10 @@ class ChapterRepositoryImpl @Inject constructor(
         chapterDao.updateChapterStatus(chapterId, status.name)
     }
 
+    override suspend fun updateReadingProgress(chapterId: Long, isRead: Boolean, lastPageRead: Int, lastReadAt: Long) {
+        chapterDao.updateReadingProgress(chapterId, isRead, lastPageRead, lastReadAt)
+    }
+
     override fun getChapterById(chapterId: Long): Flow<Chapter?> {
         return chapterDao.getChapterById(chapterId).map { it?.toDomain() }
     }

@@ -11,7 +11,10 @@ data class Chapter(
     val url: String,
     val status: Status = Status.NOT_DOWNLOADED,
     val filePath: String = "",
-    val pageCount: Int = 0
+    val pageCount: Int = 0,
+    val isRead: Boolean = false,
+    val lastPageRead: Int = 0,
+    val lastReadAt: Long = 0
 ) {
     enum class Status {
         NOT_DOWNLOADED,

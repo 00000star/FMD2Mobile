@@ -20,7 +20,7 @@ import com.fmd2mobile.database.entity.*
         HistoryEntity::class,
         ReadingProgressEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

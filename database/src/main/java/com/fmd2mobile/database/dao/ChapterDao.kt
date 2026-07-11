@@ -25,6 +25,9 @@ interface ChapterDao {
     @Query("UPDATE chapters SET status = :status WHERE id = :chapterId")
     suspend fun updateChapterStatus(chapterId: Long, status: String)
 
+    @Query("UPDATE chapters SET isRead = :isRead, lastPageRead = :lastPageRead, lastReadAt = :lastReadAt WHERE id = :chapterId")
+    suspend fun updateReadingProgress(chapterId: Long, isRead: Boolean, lastPageRead: Int, lastReadAt: Long)
+
     @Query("SELECT * FROM chapters WHERE id = :chapterId")
     fun getChapterById(chapterId: Long): Flow<ChapterEntity?>
 
