@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.fmd2mobile.core.model.Manga
 import com.fmd2mobile.core.repository.MangaRepository
 import com.fmd2mobile.core.source.MangaSource
+import com.fmd2mobile.core.source.SourceManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -19,11 +20,12 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class BrowseViewModel @Inject constructor(
-    private val sources: Map<String, @JvmSuppressWildcards MangaSource>,
+    private val sourceManager: SourceManager,
     private val mangaRepository: MangaRepository
 ) : ViewModel() {
 
-    private val mangaSource: MangaSource = sources["MangaDex"] ?: sources.values.first()
+    // Default source is MangaDex if available, else whatever is first
+    private val mangaSource: MangaSource = sourceManager.getSource("MangaDex") ?: sourceManager.getSources().values.first()
 
     private val _uiState = MutableStateFlow<BrowseUiState>(BrowseUiState.Idle)
     val uiState: StateFlow<BrowseUiState> = _uiState.asStateFlow()

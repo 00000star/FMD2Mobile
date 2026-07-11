@@ -19,7 +19,7 @@ import com.fmd2mobile.core.repository.ChapterRepository
 import com.fmd2mobile.core.repository.DownloadRepository
 import com.fmd2mobile.core.repository.MangaRepository
 import com.fmd2mobile.core.repository.SettingsRepository
-import com.fmd2mobile.core.source.MangaSource
+import com.fmd2mobile.core.source.SourceManager
 import com.fmd2mobile.localsource.MihonExporter
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -44,7 +44,7 @@ class DownloadWorker @AssistedInject constructor(
     private val chapterRepository: ChapterRepository,
     private val mangaRepository: MangaRepository,
     private val settingsRepository: SettingsRepository,
-    private val sources: Map<String, @JvmSuppressWildcards MangaSource>,
+    private val sourceManager: SourceManager,
     private val client: OkHttpClient,
     private val mihonExporter: MihonExporter
 ) : CoroutineWorker(context, workerParams) {
@@ -105,7 +105,7 @@ class DownloadWorker @AssistedInject constructor(
 
         try {
             // Fetch list of page image URLs
-            val activeSource = sources[manga.source] ?: sources.values.first()
+            val activeSource = sourceManager.getSource(manga.source) ?: sourceManager.getSources().values.first()
             val pageUrls = activeSource.getPageList(chapter)
             if (pageUrls.isEmpty()) {
                 markDownloadFailed(download, chapter)
