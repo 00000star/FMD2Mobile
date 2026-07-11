@@ -8,7 +8,7 @@ All 20 developmental build strategy steps have been successfully planned, struct
 - `:core` (Domain models, repository interfaces, and downloader interfaces).
 - `:database` (Room database integration, entities, DAOs, and repository implementations).
 - `:downloader` (WorkManager parallel chunk downloader and speed tracker).
-- `:parser` (Jsoup-based HTML source scraper with Cloudflare detection).
+- `:parser` (Jsoup-based HTML source scraper + MangaDex API JSON implementation). Dagger Multibindings enabled for multi-source support.
 - `:localsource` (Mihon Local Source export zip/CBZ formatter).
 - `:settings` (DataStore preferences management).
 
