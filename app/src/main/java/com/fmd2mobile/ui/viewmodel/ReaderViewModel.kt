@@ -110,6 +110,21 @@ class ReaderViewModel @Inject constructor(
         pagePaths
     }
 
+    /**
+     * Called when the user views a new page. Automatically updates the DB with reading progress.
+     */
+    fun onPageChanged(pageIndex: Int, totalPages: Int) {
+        viewModelScope.launch {
+            val isRead = pageIndex >= totalPages - 1
+            chapterRepository.updateReadingProgress(
+                chapterId = chapterId,
+                isRead = isRead,
+                lastPageRead = pageIndex,
+                lastReadAt = System.currentTimeMillis()
+            )
+        }
+    }
+
     sealed interface ReaderUiState {
         object Loading : ReaderUiState
         data class Success(val pages: List<String>, val isOffline: Boolean) : ReaderUiState

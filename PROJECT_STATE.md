@@ -12,6 +12,7 @@ All 20 developmental build strategy steps have been successfully planned, struct
 - `:localsource` (Mihon Local Source export zip/CBZ formatter).
 - `:settings` (DataStore preferences management).
 - `Plugin Architecture` (Dynamic `DexClassLoader` extension manager to load external `.apk` scrapers at runtime without recompiling).
+- `Local Database` (Support for custom user library categories and page-by-page reading history tracking).
 
 ---
 
