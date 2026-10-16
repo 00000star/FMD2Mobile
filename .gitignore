@@ -1,0 +1,15 @@
+# Standard exclusions
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.pyc
+build/
+.dart_tool/
+.gradle/
+*.keystore
+*.db
+.env
+.env.*
+!.env.example
